@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset=utf-8>
+    <title>Ачивки на HTML5</title>
+    <style type="text/css">
+    	section {
+    		/*background: #ddd;*/
+    		display: block;
+    		padding: 5px;
+    	}
+    	.badge {
+    		display: inline-block;
+    		position: relative;
+    		width: 100px;
+    		height: 100px;
+    		background-repeat: no-repeat;
+			background-position: 50% 50%;
+			background-origin: content-box;
+			/*border: 1px solid gray;*/
+			
+    	}
+		.badge:empty {
+    		background-image: url('pic1.png'),
+				radial-gradient(circle at center, 
+					rgba(138, 185, 207, 0.15) 0%, rgba(138, 185, 207, 0.15) 63%, 
+					#8ab9cf 63% , #8ab9cf 70%, 
+					rgba(0, 0, 0, 0.0) 70% );
+		}
+
+		.badge:not(:empty) {
+			padding: 0 2px 2px 0;
+    		background-image: url('pic2.png');
+    	}
+
+		.badge:not(:empty):before, .badge:not(:empty):after {
+			position: absolute;
+			top: 0;
+			left: 0;
+			content: "";
+			display: block;
+			width: 100px;
+			height: 100px;
+			box-sizing: border-box;
+			border: solid 5px  rgb(174, 158, 181);
+    		border-bottom-color:  rgba(0, 0, 0, 0);
+    		border-left-color:  rgba(0, 0, 0, 0);
+			border-radius: 100%;
+			transform: rotate(-19deg);	
+    	}
+
+    	.badge:not(:empty):after {
+    		transform: rotate(199deg);		
+    	}
+
+    	.badge>div {
+    		box-sizing: border-box;
+    		width: 42px;
+    		height: 42px;
+    		position: absolute;
+    		top: 59%;
+    		left: 59%;
+    		border: solid 5px  rgb(174, 158, 181);
+    		border-top-color:  rgba(0, 0, 0, 0);
+    		border-left-color:  rgba(0, 0, 0, 0);
+			border-radius: 90% 100%;
+			padding-top: 7%;
+			text-align: center;
+			font-weight: bolder;
+			font-family: Sans-serif;
+			color: rgb(174, 158, 181);
+			/*outline: solid 1px green;*/
+    	}
+    	.badge>div:before {
+    		content: "";
+    		display: block;
+    		width: 93px;
+    		height: 93px;
+    		top: -61px;
+    		left: -61px;
+    		position: absolute;
+    		border-radius: 100px 100px 30px 100px;
+    		box-sizing: border-box;
+    		/*border: 1px solid red;*/
+    		background-color: rgba(174, 158, 181, 0.15);
+    	}
+    </style>
+  </head>
+  <body>
+  	<section>
+    	<div class="badge"></div>
+	</section>
+
+	<div class="badge"></div>
+	<div class="badge"><div>2</div></div>
+	<div class="badge"><div>27</div></div>
+	<div class="badge"><div>100</div></div>
+	
+  </body>
+</html>
