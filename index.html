@@ -17,6 +17,7 @@
             margin: 1em 0;
     	}
     	.badge {
+            counter-increment: badges_counter; 
     		display: inline-block;
     		position: relative;
     		width: 100px;
@@ -24,24 +25,22 @@
     		background-repeat: no-repeat;
 			background-position: 50% 50%;
 			background-origin: content-box;
-			border: 2px dotted gray;
+			/*border: 2px solid rgba(180,180,180,0.8);*/
+
+            background-image: url('pic1.png'),
+                radial-gradient(circle at center, 
+                    rgba(138, 185, 207, 0.15) 0%, rgba(138, 185, 207, 0.15) 63%, 
+                    #8ab9cf 63% , #8ab9cf 70%, 
+                    transparent 70% );
 			
     	}
-		.badge:empty {
-    		background-image: url('pic1.png'),
-				radial-gradient(circle at center, 
-					rgba(138, 185, 207, 0.15) 0%, rgba(138, 185, 207, 0.15) 63%, 
-					#8ab9cf 63% , #8ab9cf 70%, 
-					transparent 70% );
-		}
 
-		.badge:not(:empty) {
-			/*padding: 0 2px 2px 0;*/
-    		background-image: url('pic2.png');
+		.badge.numbered {
+			background-image: url('pic2.png');
             color: rgb(174, 158, 181);
     	}
 
-		.badge:not(:empty):before, .badge:not(:empty):after {
+		.badge.numbered:before, .badge.numbered:after {
 			position: absolute;
 			top: 0;
 			left: 0;
@@ -56,11 +55,11 @@
 			transform: rotate(-21deg);	
     	}
 
-    	.badge:not(:empty):after {
-    		transform: rotate(201deg);		
+    	.badge.numbered:after {
+            transform: rotate(201deg);		
     	}
 
-    	.badge>div {
+    	.badge.numbered > div {
     		box-sizing: border-box;
     		width: 43px;
     		height: 43px;
@@ -70,27 +69,28 @@
     		border: solid 5px transparent;
             border-color: transparent currentColor currentColor transparent;
     		border-radius: 90% 100%;
-			padding-top: 7%;
+			padding-top: 6%;
 			text-align: center;
 			font-weight: bolder;
 			font-family: Sans-serif;
+            font-size: large;
 		}
-        .badge>div:before {
-            counter-increment: badges_counter; 
+        .badge.numbered > div:before {
             content: "" counter(badges_counter);
         }
-    	.badge>div:after {
+    	.badge.numbered > div:after {
     		content: "";
     		display: block;
-    		width: 93px;
-    		height: 93px;
-    		top: -61px;
-    		left: -61px;
+    		width: 94px;
+    		height: 94px;
+    		top: -60px;
+    		left: -60px;
     		position: absolute;
     		border-radius: 100px 100px 30px 100px;
     		box-sizing: border-box;
     		background-color: currentColor;
             opacity: 0.15;
+            /*border: 1px dotted red;*/
     	}
     </style>
   </head>
@@ -98,15 +98,15 @@
   <h1>Задание 1: Ачивки</h1>
 
 	<div class="badge"></div>
-	<div class="badge"><div></div></div>
-	<div class="badge"><div></div></div>
-	<div class="badge"><div></div></div>
+	<div class="badge numbered"><div></div></div>
+	<div class="badge numbered"><div></div></div>
+	<div class="badge numbered"><div></div></div>
     <hr/>
     <div class='layer'>
         <div class="badge"></div>
     </div>
     <div class='layer'>
-        <div class="badge"><div></div></div>
+        <div class="badge numbered"><div></div></div>
     </div>
   </body>
 </html>
