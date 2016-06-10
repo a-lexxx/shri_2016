@@ -6,16 +6,18 @@
     <style type="text/css">
         body {
             padding: 2em;
+            
+        }
+        ol {
             counter-reset: badges_counter;
+            padding: 5px;
         }
     	.layer {
     		background: linear-gradient(to bottom right, #ccc, transparent);;
     		display: inline-block;
-            width: 105px;
-            height: 105px;
-    		padding: 5px;
             margin: 1em 0;
     	}
+
     	.badge {
             counter-increment: badges_counter; 
     		display: inline-block;
@@ -38,6 +40,7 @@
 		.badge.numbered {
 			background-image: url('pic2.png');
             color: rgb(174, 158, 181);
+           
     	}
 
 		.badge.numbered:before, .badge.numbered:after {
@@ -75,9 +78,11 @@
 			font-family: Sans-serif;
             font-size: large;
 		}
+
         .badge.numbered > div:before {
-            content: "" counter(badges_counter);
+            content: counter(badges_counter);
         }
+
     	.badge.numbered > div:after {
     		content: "";
     		display: block;
@@ -96,17 +101,18 @@
   </head>
   <body>
   <h1>Задание 1: Ачивки</h1>
-
-	<div class="badge"></div>
-	<div class="badge numbered"><div></div></div>
-	<div class="badge numbered"><div></div></div>
-	<div class="badge numbered"><div></div></div>
+    <ol>
+    	<li class="badge"></li>
+    	<li class="badge numbered"><div/></li>
+    	<li class="badge numbered"><div/></li>
+    	<li class="badge numbered"><div/></li>
+    </ol>
     <hr/>
-    <div class='layer'>
-        <div class="badge"></div>
-    </div>
-    <div class='layer'>
-        <div class="badge numbered"><div></div></div>
-    </div>
+    <ol class='layer'>
+        <li class="badge"></li>
+        <li class="badge numbered"><div></div></li>
+        <li class="badge "><div></div></li>
+        <li class="badge numbered"><div></div></li>
+    <ol>
   </body>
 </html>
