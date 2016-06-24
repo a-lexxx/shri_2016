@@ -68,8 +68,12 @@ function extractClassNames(data) {
 	var retval = {};
 	if (data.forEach instanceof Function)
 		data.forEach( function(clname) {
-			if ( retval[clname] === undefined )
-				retval[clname] = null;
+			var el = retval[clname];
+			if ( el === undefined ) {
+				retval[clname] = { 'clname':clname, 'count':1 };
+			} else {
+				el.count++;
+			}
 		} );
 	return retval;
 }
@@ -96,9 +100,12 @@ function genHashV2(i) {
   */
 module.exports = function(data) {
 	var classList = extractClassNames(data);
-	Object.keys(classList).forEach( function(clname, idx) {
-		classList[ clname ] = genHashV2( idx ); 
-	} );
+	Object.keys(classList).sort( function(cl1, cl2) {			// сортируем клссы по их встречаемости
+		return (classList[cl2].count - classList[cl1].count);	
+	}).forEach( function(clname, idx){							// генерируем им имена в зависимости от их номера
+		classList[ clname ] = genHashV2( idx ); 					// функция автоматически назначает короткие имена младшим номерам
+	});
+	
 	return classList;
 };
 
